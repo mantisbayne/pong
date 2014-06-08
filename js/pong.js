@@ -4,11 +4,20 @@ $(function() {
         'ai': 0
     };
 
+/**
+ * @name updateScore
+ * @description keeps track of score and renders in the DOM
+*/
+
     function updateScore() {
         $("#aiScore").html(score.ai);
         $("#humanScore").html(score.user);
     }
-    //Setting width, height and context for the canvas
+
+/**
+ * @description drawing the canvas
+*/
+
     var width = 1000,
         height = 600,
         //Shorthand for JQuery object
@@ -26,15 +35,47 @@ $(function() {
     $canvas.css('background-color', 'rgba(158, 167, 184, 0.2)');
     //$canvas.style.border = 'solid 2px #9900CC';
 
+/**
+ * @name ball
+ * @description creates the ball
+*/
+
     var ball = new Ball(500, 300);
+
+/**
+ * @name ballPosition
+ * @description find the ball's position
+*/
+
     var ballPosition;
+
+/**
+ * @name interval
+ * @description set up to stop game
+*/
 
     var interval;
 
+/**
+ * @name inputY
+ * @description finds the actual y-position
+*/
+
     var inputY = 0;
 
+/**
+ * @name aiY, aiDelay
+ * @description y-position and delay to make the game possible to win
+*/
     var aiY = 0;
     var aiDelay = 0;
+
+
+/**
+ * @name restartGame
+ * @description stops and restarts gameplay
+*/
+
     var userSpeedSetting;
 
     //
@@ -57,14 +98,18 @@ $(function() {
 
     }
 
+/**
+ * @name render
+ * @description creates the game
+*/
+
     function render() {
         //Styling the background first
         context.fillStyle = '#E0FFFF';
         context.clearRect(0, 0, width, height);
         //Styling the paddle
 
-        //y-100 because we want the mouse to be in the center of the paddle
-        //How many times it calls the function
+
         ball.render();
         ballPosition = ball.update();
 
@@ -74,8 +119,10 @@ $(function() {
 
     // PADDLE 
 
-    //When the mouse moves, function that paddle moves along y-axis
-    //The paddle will move along the y-axis
+/**
+ * @name Paddle
+ * @description creates the paddle, defines how the paddle will move
+*/
 
     $canvas.mousemove(function(event) {
         inputY = event.clientY;
@@ -107,6 +154,11 @@ $(function() {
 
     // Ball
 
+/**
+ * @name Ball
+ * @description creates the ball and defines how the ball will move
+*/
+
     function Ball(x, y) {
         this.x = x;
         this.y = y;
@@ -123,6 +175,11 @@ $(function() {
         context.fill();
     };
 
+/**
+ * @name delete
+ * @description allows to clear the ball and start gameplay over
+*/
+
     Ball.prototype.delete = function() {
         context.clearRect(0, 0, width, height);
     }
@@ -131,6 +188,11 @@ $(function() {
         aiDelay = Math.random() * 150 + 1
         //aiDelay = 0;
     }
+
+/**
+ * @name hitsAPaddle
+ * @description defines the movement of the ball when it hits one of the paddles
+*/
 
     Ball.prototype.hitsAPaddle = function() {
         // left side
@@ -145,6 +207,11 @@ $(function() {
             this.speedX *= -1;
         }
     }
+
+/**
+ * @name hitsAWall
+ * @description defines what will happen when the ball hits a wall of the canvas
+*/
 
     Ball.prototype.hitsAWall = function() {
 
@@ -166,6 +233,11 @@ $(function() {
 
     }
 
+/**
+ * @name update
+ * @description what happens as the ball is moving
+*/
+
     Ball.prototype.update = function() {
 
         this.hitsAPaddle();
@@ -176,6 +248,11 @@ $(function() {
 
         return this.y;
     };
+
+/**
+ * @name winner
+ * @description restarts game and displays who last scored
+*/
 
     function winner(winner) {
 
