@@ -1,11 +1,3 @@
-/*
-Comment clearly, professionally
-Explain each of the concepts covered
-Make it look beautiful and be interactive in the browser window
-*/
-
-
-
 $(function() {
     var score = {
         'user': 0,
@@ -44,6 +36,8 @@ $(function() {
     var aiY = 0;
     var aiDelay = 0;
     var userSpeedSetting;
+
+    //
 
     function restartGame() {
 
