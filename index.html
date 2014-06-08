@@ -5,20 +5,26 @@
 		<link href="css/pong.css" rel="stylesheet">
 	</head>
 	<body>
-		<div id="winner"></div>
-		<div id="topbar">
-			Speed: <input type="number" id="userSpeed" value="1"  style="width: 30px" /> | 
-			<button id="startGame">Start</button> |
-			<button id="endGame">End Game</button>
-			<div><strong>Human: </strong><span id="humanScore">0</span></div>
-			<div><strong>Computer: </strong><span id="aiScore">0</span></div>
-
+		<div class="header">
+			<h1>PONG</h1>
 		</div>
-		<div class="canvas-body">
-			<canvas></canvas>
+		<div class="container">
+			<div class="left-nav">
+				<div id="topbar">
+					<button id="startGame">START</button> |
+					<button id="endGame">QUIT</button>
+					<br>
+					Speed: <input type="number" id="userSpeed" value="1"  style="width: 30px" /> | 
+					<div><strong>You: </strong><span id="humanScore">0</span></div>
+					<div><strong>Computer: </strong><span id="aiScore">0</span></div>
+				</div>
+			</div>
+			<div class="canvas-body">
+				<div id="winner"></div>
+				<canvas></canvas>
+			</div>
 		</div>
 		<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
 		<script type="text/javascript" src="js/pong.js"></script>
-
 	</body>
 </html>
