@@ -17,6 +17,8 @@ h1 {
 .left-nav {
 	float: left;
 	font-family: Arial;
+	/*border: 3px solid orange; */
+	width: 25%;
 }
 
 #topbar {
@@ -36,6 +38,22 @@ button {
 
 button:hover {
 	background-color: #E6E6FA;
+}
+
+.image {
+	padding: 20px;
+	text-align: center;
+	/* border: 3px solid green; */
+}
+
+.description {
+	margin: 1em;
+}
+
+p {
+	display: inline-block;
+	padding: 10px;
+	/* border: 3px solid purple; */
 }
 
 canvas {
